@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Database</title>
+</head>
+<body>
+
+  <h1>Contact Form</h1>
+
+  <form id="contactForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Contact List</h2>
+  <div id="contactList"></div>
+
+  <script>
+    // In-memory database (replace with your actual database implementation)
+    let contacts = []; 
+
+    // Load contacts from local storage on page load
+    const storedContacts = localStorage.getItem('contacts');
+    if (storedContacts) {
+      contacts = JSON.parse(storedContacts);
+    }
+
+    // Function to add a new contact to the database
+    function addContact(name, email, message) {
+      const newContact = {
+        name: name,
+        email: email,
+        message: message
+      };
+      contacts.push(newContact);
+      saveContactsToLocalStorage(); 
+      displayContacts();
+    }
+
+    // Function to display contacts in the HTML
+    function displayContacts() {
+      const contactList = document.getElementById('contactList');
+      contactList.innerHTML = ""; 
+
+      contacts.forEach(contact => {
+        const contactItem = document.createElement('div');
+        contactItem.innerHTML = `
+          <p>Name: ${contact.name}</p>
+          <p>Email: ${contact.email}</p>
+          <p>Message: ${contact.message}</p>
+          <hr>
+        `;
+        contactList.appendChild(contactItem);
+      });
+    }
+
+    // Function to save contacts to local storage
+    function saveContactsToLocalStorage() {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+
+    // Event listener for form submission
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      addContact(name, email, message);
+      contactForm.reset(); 
+    });
+
+    // Initial display of contacts
+    displayContacts(); 
+
+  </script>
+
+</body>
+</html>

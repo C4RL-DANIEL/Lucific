@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+  <div class="container">
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <script>
+    const contactForm = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+
+    const database = {
+      data: { contacts: [] },
+      archivedContacts: [],
+      deletedContacts: [],
+      saveToStorage: function() {
+        localStorage.setItem('myDatabase', JSON.stringify(this.data));
+        localStorage.setItem('archivedContacts', JSON.stringify(this.archivedContacts));
+        localStorage.setItem('deletedContacts', JSON.stringify(this.deletedContacts));
+      },
+      loadFromStorage: function() {
+        const storedData = localStorage.getItem('myDatabase');
+        if (storedData) {
+          this.data = JSON.parse(storedData);
+        }
+        const storedArchived = localStorage.getItem('archivedContacts');
+        if (storedArchived) {
+          this.archivedContacts = JSON.parse(storedArchived);
+        }
+        const storedDeleted = localStorage.getItem('deletedContacts');
+        if (storedDeleted) {
+          this.deletedContacts = JSON.parse(storedDeleted);
+        }
+      }
+    };
+
+    database.loadFromStorage();
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = nameInput.value;
+      const email = emailInput.value;
+      const message = messageInput.value;
+
+      const newContact = {
+        name: name,
+        email: email,
+        message: message
+      };
+
+      database.data.contacts.push(newContact);
+      database.saveToStorage();
+
+      nameInput.value = '';
+      emailInput.value = '';
+      messageInput.value = '';
+
+      alert('Your message has been sent!');
+    });
+
+
+  </script>
+
+</body>
+</html>
+ <div class="singlebutton"></div>
+ <nav>
+    <singlebutton><a href="index.html">Home</a></singlebutton>
+   </nav>
+ <style>
+
+
+.button::before, .button::after {
+ content: '';
+ display: block;
+ width: 50px;
+ height: 50px;
+ transform: translate(-50%, -50%);
+ position: absolute;
+ border-radius: 50%;
+ z-index: -1;
+ background-color: var(--color);
+ transition: 1s ease;
+ position: fixed; 
+}
+
+.button::before {
+ top: -1em;
+ left: -1em;
+}
+
+.button::after {
+ left: calc(100% + 1em);
+ top: calc(100% + 1em);
+}
+
+.button:hover::before, .button:hover::after {
+ height: 410px;
+ width: 410px;
+}
+
+.button:hover {
+ color: rgb(255, 255, 255);
+}
+
+.button:active {
+ filter: brightness(0.8);
+}
+
+footer {
+  position: absolute;
+  background-color: rgba(51, 51, 51, 0.8); 
+  color: #ffffff;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 0.8em;
+   padding: 10px 0;
+   font-weight: 300;
+   letter-spacing: 1px;
+}
+
+nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center; /* Center the links */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+
+ </style>
+
+
+<footer>
+  <p>&copy; 2025 Lucific</p>
+</footer>
+
+    

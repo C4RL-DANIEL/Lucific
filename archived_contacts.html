@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archived Contacts</title>
+<link rel="stylesheet" href="contact.css">
+</head>
+    <
+<body>
+
+    <div class="container">
+        <h2>Archived Contacts</h2>
+        <ul id="archivedContactList"></ul> 
+        <p id="noArchivedContactsMessage" class="no-contacts">No archived contacts found.</p> 
+    </div>
+
+    <script>
+        const database = {
+            data: { contacts: [] },
+            archivedContacts: [], 
+            deletedContacts: [], 
+            saveToStorage: function() {
+                localStorage.setItem('myDatabase', JSON.stringify(this.data)); 
+                localStorage.setItem('archivedContacts', JSON.stringify(this.archivedContacts)); 
+                localStorage.setItem('deletedContacts', JSON.stringify(this.deletedContacts)); 
+            },
+            loadFromStorage: function() {
+                const storedData = localStorage.getItem('myDatabase');
+                if (storedData) {
+                    this.data = JSON.parse(storedData);
+                }
+                const storedArchived = localStorage.getItem('archivedContacts');
+                if (storedArchived) {
+                    this.archivedContacts = JSON.parse(storedArchived);
+                }
+                const storedDeleted = localStorage.getItem('deletedContacts');
+                if (storedDeleted) {
+                    this.deletedContacts = JSON.parse(storedDeleted);
+                }
+            }
+        };
+
+        database.loadFromStorage();
+
+        const archivedContactList = document.getElementById('archivedContactList');
+        const noArchivedContactsMessage = document.getElementById('noArchivedContactsMessage');
+
+        // Display previously stored contacts
+        function displayArchivedContacts() {
+            archivedContactList.innerHTML = ''; 
+            noArchivedContactsMessage.style.display = 'none'; 
+
+            if (database.archivedContacts.length === 0) {
+                noArchivedContactsMessage.style.display = 'block'; 
+            } else {
+                database.archivedContacts.forEach(contact => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <span>${contact.name} - ${contact.email}</span>
+                        <div>
+                            <button class="unarchive-btn">Unarchive</button>
+                            <button class="delete-btn">Delete</button>
+                        </div>
+                    `;
+
+                    listItem.querySelector('.unarchive-btn').addEventListener('click', () => {
+                        const index = database.archivedContacts.indexOf(contact);
+                        if (index > -1) {
+                            database.data.contacts.push(database.archivedContacts.splice(index, 1)[0]);
+                            database.saveToStorage();
+                            displayArchivedContacts(); 
+                        }
+                    });
+
+                    listItem.querySelector('.delete-btn').addEventListener('click', () => {
+                        const index = database.archivedContacts.indexOf(contact);
+                        if (index > -1) {
+                            database.archivedContacts.splice(index, 1); 
+                            database.saveToStorage(); 
+                            displayArchivedContacts(); 
+                        }
+                    });
+
+                    archivedContactList.appendChild(listItem);
+                });
+            }
+        }
+
+        displayArchivedContacts(); 
+
+    </script>
+
+</body>
+</html>

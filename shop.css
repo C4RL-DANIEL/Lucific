@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .product {
+      width: calc(50% - 1rem); /* 2 columns per row */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Adjust styles for even smaller screens */
+    .product {
+      width: calc(100% - 1rem); /* 1 column per row */
+    }
+  }

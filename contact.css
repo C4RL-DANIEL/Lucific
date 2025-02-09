@@ -1,0 +1,123 @@
+
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffffff;
+            overflow: hidden;
+        
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 0.10s ease-in-out forwards 0.2s;
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.5s ease-in-out forwards 0.8s;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out, transform 0.7s ease-in-out;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards 0.13s;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            background-color: #696969; /* Blue background color */
+            color: #fff; 
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #696969;
+            transform: scale(1.05);
+        }
+        body {
+          font-family: sans-serif;
+          margin: 0;
+          background-image: url('https://lucific7.wordpress.com/wp-content/uploads/2024/11/1000037022.png'); 
+          background-size: cover;
+          background-position: center center;
+          overflow-y: auto;
+      }
+
+      
+     

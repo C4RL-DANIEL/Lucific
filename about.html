@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+            background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://lucific7.wordpress.com/wp-content/uploads/2024/11/1000037022.png'); 
+            background-size: cover;
+            background-position: center center;
+            overflow-y: auto;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            animation: headerFadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            text-transform: uppercase;
+            opacity: 1;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: navSlideIn 0.8s ease-in-out;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem;
+            width: 80%;
+            margin: 0 auto;
+            text-align: left;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: mainSlideIn 1s ease-in-out;
+            opacity: 0.9;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 0.5rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            animation: footerFadeIn 0.8s ease-in-out;
+        }
+        h2 {
+            opacity: 1;
+        }
+ 
+        .fin-animation {
+            animation: finWave 2s infinite ease-in-out;
+        }
+
+        @keyframes finWave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes headerFadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes navSlideIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes mainSlideIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes footerFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>About Us</h1>
+    </header>
+
+    <nav class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <h2>Who We Are</h2>
+        <p>
+            At Lucific, we are passionate about Embracing new ideas and technologies.
+        </p>
+        <p>
+            We believe in Sharing knowledge and empowering others, with our clients to understand their unique needs and
+            deliver Fostering a creative and innovative environment, that exceed their expectations.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to To inspire and elevate through creative expression and groundbreaking ideas, by providing
+            Personal solutions, exceptional customer support.
+        </p>
+
+        <h2>Our Values</h2>
+        <p>
+            We are committed to To uplift and empower individuals and communities through knowledge and inspiration..
+            We strive to build long-term relationships with our clients based on trust, mutual respect, and a shared commitment to success.
+        </p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Lucific</p>
+    </footer>
+
+</body>
+</html>

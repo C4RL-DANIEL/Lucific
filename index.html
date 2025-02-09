@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucific</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('https://lucific7.wordpress.com/wp-content/uploads/2024/11/1000037022.png'); 
+            background-size: cover;
+            background-position: center center;
+            overflow-y: auto;
+        }
+
+        header {
+            background-color: rgba(51, 51, 51, 0.8); 
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            animation: fadeIn 1s ease-in-out; 
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 3px;
+        }
+
+        nav a:hover {
+            background-color: #b1b1b1;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        section {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-in-out; /* Add fadeInUp animation */
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.8); 
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            padding: 10px 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+
+        }
+
+        /* ... (Pop-up styles) ... */
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lucific</h1>
+    </header>
+
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="social.html">Socials</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Welcome to Lucific</h2>
+            <p> Where Light Takes Shape.</p>
+        </section>
+
+        <section>
+            <h2>About Lucific</h2>
+            <p>Lucific is a fictional company that specializes in creating innovative lighting solutions.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Lucific</p>
+    </footer>
+
+    </body>
+</html>
