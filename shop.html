@@ -135,6 +135,7 @@
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
+            z-index: -100;
         }
 
         .product:hover .overlay {
@@ -192,6 +193,38 @@
         .product:nth-child(11) { --i: 10; } 
         .product:nth-child(12) { --i: 11; } 
 
+
+        .buy-now-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #666666; /* Blue */
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform */
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 10px; /* Space between price and button */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            z-index: 1000; /* Ensure button is above overlay */
+        }
+
+        .buy-now-button:hover {
+            background-color: #6e6e6e; /* Darker blue */
+            transform: translateY(-2px); /* Lift up slightly on hover */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+        }
+
+        .buy-now-button:active {
+            transform: translateY(0); /* No lift on click */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reset shadow */
+        }
+
+        .buy-now-button:hover, .buy-now-button:active {
+            z-index: 1000; /* Ensure button is above overlay */
+        }
     </style>
 </head>
 <body>
@@ -225,10 +258,11 @@
             <h3>Self Confident</h3>
             <p>A high-quality product with excellent features.</p>
             <span class="price">₱100</span>
+            <a href="https://www.raket.ph/carls_designs/products/how-to-improve-your-self-and-personal-development" target="_blank" class="buy-now-button">Buy Now</a>
         </div>
 
         <div class="product">
-            <img src="product2.jpg" alt="Product 2">
+            <img src="product2.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 2</h3>
             <p>Stylish and modern design for the discerning customer.</p>
@@ -236,7 +270,7 @@
         </div>
 
         <div class="product">
-            <img src="product3.jpg" alt="Product 3">
+            <img src="product3.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 3</h3>
             <p>Our best-selling product with rave reviews.</p>
@@ -244,7 +278,7 @@
         </div>
 
         <div class="product">
-            <img src="product4.jpg" alt="Product 4">
+            <img src="product4.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 4</h3>
             <p>Experience the future with this cutting-edge product.</p>
@@ -252,7 +286,7 @@
         </div>
 
         <div class="product">
-            <img src="product5.jpg" alt="Product 5">
+            <img src="product5.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 5</h3>
             <p>Unleash your creativity with this versatile product.</p>
@@ -261,7 +295,7 @@
         </div>
 
         <div class="product">
-            <img src="product6.jpg" alt="Product 6">
+            <img src="product6.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 6</h3>
             <p>Discover new possibilities with this innovative product.</p>
@@ -269,7 +303,7 @@
         </div>
 
         <div class="product">
-            <img src="product7.jpg" alt="Product 7">
+            <img src="product7.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 7</h3>
             <p>Enhance your lifestyle with this premium product.</p>
@@ -277,7 +311,7 @@
         </div>
 
         <div class="product">
-            <img src="product8.jpg" alt="Product 8">
+            <img src="product8.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 8</h3>
             <p>Upgrade your home with this elegant product.</p>
@@ -285,7 +319,7 @@
         </div>
 
         <div class="product">
-            <img src="product9.jpg" alt="Product 9">
+            <img src="product9.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 9</h3>
             <p>Experience luxury with this exclusive product.</p>
@@ -293,7 +327,7 @@
         </div>
 
         <div class="product">
-            <img src="product10.jpg" alt="Product 10">
+            <img src="product10.jpg" alt="Coming Soon">
             <div class="overlay"></div>
             <h3>Product 10</h3>
             <p>Unleash your potential with this powerful product.</p>
