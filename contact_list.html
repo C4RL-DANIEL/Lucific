@@ -2,13 +2,49 @@
 <html>
 <head>
   <title>Contact List</title>
+  <style>
+    body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#contactList {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.shared-data-message {
+  color: #777;
+  font-style: italic;
+  margin-bottom: 10px;
+  text-align: center; /* Center the message */
+}
+
+.contact-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item p { /* Style the contact details */
+  margin: 5px 0;
+}
+  </style>
 </head>
 <body>
 
   <h1>Contact List</h1>
-  <div id="contactList"></div>
+  <div id="contactList">
+    </div>
 
-  <script src="script.js"></script> 
-  
-</body>
+  <script src="script.js"></script> </body>
 </html>
