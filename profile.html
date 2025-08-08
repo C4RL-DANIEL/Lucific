@@ -1,1 +1,1457 @@
-<iframe id='kofiframe' src='https://ko-fi.com/lrac21/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='lrac21'></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page (HTML/CSS/JS)</title>
+    <style>
+        /* Base and Typography */
+        body {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            margin: 0;
+            padding: 1rem; /* p-4 */
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+
+        /* App Container */
+        .min-h-screen {
+            min-height: 100vh;
+        }
+
+        .bg-gray-50 {
+            background-color: #f9fafb;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .transition-opacity {
+            transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 1000ms; /* duration-1000 */
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+
+        .opacity-100 {
+            opacity: 1;
+        }
+
+        /* Main Content Wrapper */
+        .w-full {
+            width: 100%;
+        }
+
+        .max-w-4xl {
+            max-width: 56rem; /* Equivalent to 896px */
+        }
+
+        .bg-white {
+            background-color: #fff;
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem; /* 12px */
+        }
+
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .md\:p-8 { /* Applies on medium screens and up */
+            padding: 2rem;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        /* User ID Display */
+        .absolute {
+            position: absolute;
+        }
+
+        .top-4 {
+            top: 1rem; /* 16px */
+        }
+
+        .right-4 {
+            right: 1rem; /* 16px */
+        }
+
+        .bg-indigo-100 {
+            background-color: #e0e7ff;
+        }
+
+        .text-indigo-800 {
+            color: #3730a3;
+        }
+
+        .text-xs {
+            font-size: 0.75rem; /* 12px */
+        }
+
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+
+        .rounded-full {
+            border-radius: 9999px; /* Fully rounded */
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        /* Headings */
+        .text-3xl {
+            font-size: 1.875rem; /* 30px */
+            line-height: 2.25rem; /* 36px */
+        }
+
+        .font-extrabold {
+            font-weight: 800;
+        }
+
+        .text-gray-900 {
+            color: #111827;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem; /* 24px */
+            line-height: 2rem; /* 32px */
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .text-gray-800 {
+            color: #1f2937;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Buttons */
+        .justify-center {
+            justify-content: center;
+        }
+
+        .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+            margin-left: 1rem; /* space-x-4 */
+        }
+
+        button {
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem; /* px-6 */
+            padding-top: 0.5rem; /* py-2 */
+            padding-bottom: 0.5rem; /* py-2 */
+            border-radius: 0.5rem; /* rounded-lg */
+            font-weight: 500;
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms; /* duration-300 */
+            border: none;
+            cursor: pointer;
+        }
+
+        .bg-indigo-600 {
+            background-color: #4f46e5;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .bg-gray-200 {
+            background-color: #e5e7eb;
+        }
+
+        .text-gray-700 {
+            color: #4b5563;
+        }
+
+        .hover\:bg-gray-300:hover {
+            background-color: #d1d5db;
+        }
+
+        .inline-block {
+            display: inline-block;
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem;
+        }
+
+        /* Profile Overview Section */
+        .shadow-sm {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .border {
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .border-gray-200 {
+            border-color: #e5e7eb;
+        }
+
+        .md\:flex-row { /* Applies on medium screens and up */
+            flex-direction: row;
+        }
+
+        .md\:items-start { /* Applies on medium screens and up */
+            align-items: flex-start;
+        }
+
+        .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 1rem; /* space-y-4 */
+        }
+
+        .md\:space-y-0 > :not([hidden]) ~ :not([hidden]) { /* Applies on medium screens and up */
+            margin-top: 0;
+        }
+
+        .md\:space-x-8 > :not([hidden]) ~ :not([hidden]) { /* Applies on medium screens and up */
+            margin-left: 2rem; /* space-x-8 */
+        }
+
+        .flex-shrink-0 {
+            flex-shrink: 0;
+        }
+
+        .w-32 {
+            width: 8rem; /* 128px */
+        }
+
+        .h-32 {
+            height: 8rem; /* 128px */
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .object-cover {
+            object-fit: cover;
+        }
+
+        .border-4 {
+            border-width: 4px;
+        }
+
+        .border-indigo-200 {
+            border-color: #c7d2fe;
+        }
+
+        .md\:text-left { /* Applies on medium screens and up */
+            text-align: left;
+        }
+
+        .text-lg {
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.75rem; /* 28px */
+        }
+
+        .text-indigo-500 {
+            color: #6366f1;
+        }
+
+        .leading-relaxed {
+            line-height: 1.625;
+        }
+
+        .text-indigo-600 {
+            color: #4f46e5;
+        }
+
+        .hover\:underline:hover {
+            text-decoration-line: underline;
+        }
+
+        /* Account Details */
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        .border-b {
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        .pb-2 {
+            padding-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .md\:grid-cols-2 { /* Applies on medium screens and up */
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        /* Edit Profile Section */
+        .block {
+            display: block;
+        }
+
+        .text-sm {
+            font-size: 0.875rem; /* 14px */
+        }
+
+        .mt-1 {
+            margin-top: 0.25rem;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .border-gray-300 {
+            border-color: #d1d5db;
+        }
+
+        .rounded-md {
+            border-radius: 0.375rem; /* 6px */
+        }
+
+        .p-3 {
+            padding: 0.75rem;
+        }
+
+        .focus\:ring-indigo-500:focus {
+            --tw-ring-color: #6366f1; /* #6366f1 */
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            --tw-ring-offset-width: 2px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+            box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+        }
+
+        .focus\:border-indigo-500:focus {
+            border-color: #6366f1;
+        }
+
+        textarea {
+            resize: vertical; /* Allows vertical resizing */
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .bg-indigo-600 {
+            background-color: #4f46e5;
+        }
+
+        .hover\:bg-indigo-700:hover {
+            background-color: #4338ca;
+        }
+
+        .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+
+        .focus\:ring-2:focus {
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000);
+            outline: none;
+        }
+
+        .focus\:ring-indigo-500:focus {
+            --tw-ring-color: #6366f1;
+        }
+
+        .focus\:ring-offset-2:focus {
+            --tw-ring-offset-width: 2px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .ml-2 {
+            margin-left: 0.5rem;
+        }
+
+        .text-green-600 {
+            color: #16a34a;
+        }
+
+        .text-red-600 {
+            color: #dc2626;
+        }
+
+        /* Website Analytics Section */
+        .h-80 {
+            height: 20rem; /* 320px */
+        }
+
+        .list-disc {
+            list-style-type: disc;
+        }
+
+        .list-inside {
+            list-style-position: inside;
+        }
+
+        .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 0.5rem; /* space-y-2 */
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .text-gray-600 {
+            color: #4b5563;
+        }
+
+        .pt-6 {
+            padding-top: 1.5rem;
+        }
+
+        .border-t {
+            border-top-width: 1px;
+            border-top-style: solid;
+        }
+
+        .border-gray-200 {
+            border-color: #e5e7eb;
+        }
+
+        .bg-purple-600 {
+            background-color: #9333ea;
+        }
+
+        .hover\:bg-purple-700:hover {
+            background-color: #7e22ce;
+        }
+
+        .focus\:ring-purple-500:focus {
+            --tw-ring-color: #a855f7;
+        }
+
+        .bg-indigo-50 {
+            background-color: #eef2ff;
+        }
+
+        .border-indigo-200 {
+            border-color: #c7d2fe;
+        }
+
+        .text-indigo-800 {
+            color: #3730a3;
+        }
+
+        .whitespace-pre-wrap {
+            white-space: pre-wrap;
+        }
+
+        .bg-red-50 {
+            background-color: #fef2f2;
+        }
+
+        .border-red-200 {
+            border-color: #fecaca;
+        }
+
+        .text-red-800 {
+            color: #991b1b;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+          0%, 100% {
+            transform: translateY(-25%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+          }
+          50% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+          }
+        }
+
+        .animate-bounce {
+          animation: bounce 1s infinite;
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin {
+          animation: spin 1s linear infinite;
+        }
+
+        /* Additional CSS for the "Thank You!" button from earlier context */
+        .top-right-button {
+            position: absolute;
+            top: 1rem; /* 16px */
+            right: 1rem; /* 16px */
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green background for the button */
+            color: white;
+            border: none;
+            border-radius: 8px; /* Rounded corners for the button */
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .top-right-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        /* Hidden class to control section visibility */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Specific styles for Login/Registration page */
+        .auth-container {
+            background-color: #fff;
+            padding: 2.5rem; /* p-10 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            width: 100%;
+            max-width: 28rem; /* max-w-sm (approx) */
+            text-align: center;
+        }
+
+        .auth-container h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1.5rem; /* mb-6 */
+            color: #1a202c; /* text-gray-900 */
+        }
+
+        .auth-form-group {
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        .auth-form-group label {
+            display: block;
+            text-align: left;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            color: #4a5568; /* text-gray-700 */
+            margin-bottom: 0.5rem; /* mb-1 */
+        }
+
+        .auth-form-group input {
+            width: 100%;
+            padding: 0.75rem; /* p-3 */
+            border: 1px solid #e2e8f0; /* border-gray-300 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 1rem; /* text-base */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+            box-sizing: border-box; /* Ensures padding doesn't increase width */
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 0.75rem; /* py-3 */
+            background-color: #4f46e5; /* bg-indigo-600 */
+            color: #fff;
+            font-weight: 600; /* font-semibold */
+            border-radius: 0.5rem; /* rounded-lg */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            margin-top: 1rem; /* mt-4 */
+        }
+
+        .auth-button:hover {
+            background-color: #4338ca; /* hover:bg-indigo-700 */
+        }
+
+        .auth-message {
+            margin-top: 1rem; /* mt-4 */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+        }
+
+        .auth-message.success {
+            color: #16a34a; /* text-green-600 */
+        }
+
+        .auth-message.error {
+            color: #dc2626; /* text-red-600 */
+        }
+
+        .auth-switch-text {
+            font-size: 0.875rem; /* text-sm */
+            color: #4a5568; /* text-gray-700 */
+            margin-top: 1rem; /* mt-4 */
+        }
+
+        .auth-switch-text button {
+            background: none;
+            border: none;
+            color: #4f46e5; /* text-indigo-600 */
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0;
+            margin-left: 0.25rem;
+        }
+
+        .auth-switch-text button:hover {
+            color: #4338ca; /* hover:text-indigo-700 */
+        }
+
+        /* User Management Specific Styles */
+        #user-management-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #user-management-section li {
+            background-color: #fefcbf; /* bg-yellow-100 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #fbd38d; /* border-yellow-300 */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        #user-management-section li span {
+            font-weight: 600;
+            color: #9c5c00; /* text-yellow-800 */
+        }
+
+        #user-management-section li select {
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+        }
+
+        #user-management-section li button {
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #user-management-section li button.save-btn {
+            background-color: #38a169; /* bg-green-600 */
+            color: white;
+        }
+        #user-management-section li button.save-btn:hover {
+            background-color: #2f855a; /* hover:bg-green-700 */
+        }
+        #user-management-section li button.disabled {
+            background-color: #cbd5e0; /* bg-gray-400 */
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 font-sans">
+
+    <!-- Authentication Section (Login/Register) -->
+    <div id="auth-section" class="min-h-screen flex flex-col items-center justify-center p-4">
+        <div class="auth-container">
+            <h2 id="auth-title">Login</h2>
+            <div id="auth-message-box" class="auth-message hidden"></div>
+
+            <form id="auth-form">
+                <div class="auth-form-group">
+                    <label for="auth-username">Username:</label>
+                    <input type="text" id="auth-username" required>
+                </div>
+                <div class="auth-form-group">
+                    <label for="auth-password">Password:</label>
+                    <input type="password" id="auth-password" required>
+                </div>
+                <div class="flex items-center mt-2 mb-4 justify-start">
+                    <input type="checkbox" id="remember-username" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                    <label for="remember-username" class="ml-2 block text-sm text-gray-900">Remember Username</label>
+                </div>
+                <button type="submit" id="auth-submit-btn" class="auth-button">Login</button>
+            </form>
+            <div class="auth-switch-text">
+                <span id="switch-text">Don't have an account?</span>
+                <button id="switch-auth-mode-btn">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Profile Dashboard Section -->
+    <div id="main-profile-dashboard" class="min-h-screen bg-gray-50 flex flex-col items-center p-4 opacity-0 transition-opacity duration-1000 hidden">
+        <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8 relative">
+            <!-- User ID Display -->
+            <div class="absolute top-4 right-4 bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full font-medium">
+                User ID: <span id="user-id-display"></span>
+            </div>
+
+            <!-- "Thank You!" Button (example from previous conversation) -->
+            <button id="thank-you-button" class="top-right-button">
+                Thank You!
+            </button>
+
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">Your Profile Dashboard</h1>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-center mb-6 space-x-4">
+                <button id="overview-btn" class="px-6 py-2 rounded-lg font-medium bg-indigo-600 text-white shadow-md">
+                    <svg class="inline-block mr-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Overview
+                </button>
+                <button id="edit-profile-btn" class="px-6 py-2 rounded-lg font-medium bg-gray-200 text-gray-700">
+                    <svg class="inline-block mr-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h4.56a2 2 0 0 1 2 2v4.56a2 2 0 0 1-2 2H12.22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path d="M12.22 14h4.56a2 2 0 0 1 2 2v4.56a2 2 0 0 1-2 2H12.22a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z"></path><path d="M2 2h4.56a2 2 0 0 1 2 2v4.56a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path d="M2 14h4.56a2 2 0 0 1 2 2v4.56a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z"></path></svg> Edit Profile
+                </button>
+                <button id="analytics-btn" class="px-6 py-2 rounded-lg font-medium bg-gray-200 text-gray-700">
+                    <svg class="inline-block mr-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg> Analytics
+                </button>
+                <button id="user-management-btn" class="px-6 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hidden">
+                    <svg class="inline-block mr-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> User Management
+                </button>
+            </div>
+
+            <!-- Profile Overview Section -->
+            <div id="profile-overview-section" class="content-section bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
+                    <div class="flex-shrink-0">
+                        <img id="profile-pic-display" src="https://placehold.co/150x150/E0E7FF/4F46E5?text=User" alt="Profile" class="w-32 h-32 rounded-full object-cover border-4 border-indigo-200 shadow-md">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h2 id="profile-name-display" class="text-3xl font-bold text-gray-800 mb-2"></h2>
+                        <p class="text-gray-600 text-lg mb-2 flex items-center justify-center md:justify-start">
+                            <svg class="mr-2 text-indigo-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span id="profile-email-display"></span>
+                        </p>
+                        <p id="profile-bio-display" class="text-gray-700 leading-relaxed mb-2"></p>
+                        <p class="text-gray-700">
+                            <a id="profile-website-display" href="#" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline"></a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Account Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+                        <div>
+                            <p><strong class="font-semibold">Member Since:</strong> <span id="member-since-display"></span></p>
+                        </div>
+                        <div>
+                            <p><strong class="font-semibold">Role:</strong> <span id="profile-role-display"></span></p>
+                        </div>
+                        <div>
+                            <p><strong class="font-semibold">Total Projects:</strong> <span id="total-projects-display"></span></p>
+                        </div>
+                         <div>
+                            <p><strong class="font-semibold">Last Login:</strong> <span id="last-login-display"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Section -->
+            <div id="edit-profile-section" class="content-section bg-white p-6 rounded-lg shadow-sm border border-gray-200 hidden">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Edit Your Profile</h2>
+                <form id="edit-profile-form" class="space-y-6">
+                    <div>
+                        <label for="edit-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="edit-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+                    <div>
+                        <label for="edit-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="edit-email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+                    <div>
+                        <label for="edit-profile-picture" class="block text-sm font-medium text-gray-700 mb-1">Profile Picture URL</label>
+                        <input type="url" id="edit-profile-picture" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., https://example.com/your-image.jpg">
+                        <div class="mt-4 text-center">
+                            <img id="edit-profile-pic-preview" src="https://placehold.co/150x150/E0E7FF/4F46E5?text=User" alt="Profile Preview" class="w-24 h-24 rounded-full object-cover mx-auto border-2 border-indigo-300">
+                            <p class="text-xs text-gray-500 mt-1">Preview</p>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="edit-bio" class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                        <textarea id="edit-bio" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Tell us a little about yourself..."></textarea>
+                    </div>
+                    <div>
+                        <label for="edit-website" class="block text-sm font-medium text-gray-700 mb-1">Website</label>
+                        <input type="url" id="edit-website" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., https://yourwebsite.com">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" id="save-profile-btn" class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors flex items-center justify-center">
+                            <svg class="mr-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg> Save Changes
+                        </button>
+                        <div id="save-message" class="flex items-center space-x-2 text-sm font-medium hidden">
+                            <!-- Message will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Website Analytics Section -->
+            <div id="analytics-section" class="content-section bg-white p-6 rounded-lg shadow-sm border border-gray-200 hidden">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Website Analytics (Example Data)</h2>
+                <p class="text-gray-700 mb-4">
+                  This section would display real-time analytics for your website. Below is some example data to illustrate how it could look.
+                </p>
+                <div class="h-80 w-full flex items-center justify-center bg-gray-100 rounded-lg text-gray-600 text-center">
+                    <p>Analytics chart placeholder. In a real application, a charting library would render here.</p>
+                </div>
+                <div class="mt-6 text-gray-700">
+                    <h3 class="text-xl font-semibold mb-3">Key Metrics:</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Total Page Views: <strong>15,000</strong></li>
+                        <li>Unique Visitors: <strong>5,500</strong></li>
+                        <li>Bounce Rate: <strong>45%</strong></li>
+                        <li>Average Session Duration: <strong>3:20</strong></li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-600">
+                        (Note: Data shown here is for demonstration purposes only.)
+                    </p>
+                </div>
+                 <div class="mt-8 pt-6 border-t border-gray-200">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">AI-Powered Analytics Insight ✨</h3>
+                    <button id="get-ai-insight-btn" class="px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors flex items-center justify-center">
+                        <svg class="mr-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg> Get AI Insight
+                    </button>
+
+                    <p id="ai-loading-message" class="mt-4 text-indigo-700 flex items-center hidden">
+                        <svg class="animate-spin mr-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="M16.24 16.24l2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="M16.24 7.76l2.83-2.83"></path></svg> Analyzing your data...
+                    </p>
+
+                    <div id="ai-result-display" class="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200 text-indigo-800 hidden">
+                        <h4 class="font-bold mb-2">Analysis:</h4>
+                        <p id="ai-analysis-text" class="whitespace-pre-wrap"></p>
+                    </div>
+
+                    <div id="ai-error-display" class="mt-6 p-4 bg-red-50 rounded-lg border border-red-200 text-red-800 hidden">
+                        <h4 class="font-bold mb-2">Error:</h4>
+                        <p id="ai-error-text"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management Section -->
+            <div id="user-management-section" class="content-section bg-white p-6 rounded-lg shadow-sm border border-gray-200 hidden">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">User Management</h2>
+                <div id="user-management-message" class="auth-message hidden mb-4"></div>
+                <ul id="user-list">
+                    <!-- Users will be dynamically loaded here -->
+                </ul>
+            </div>
+
+
+            <!-- Logout Button -->
+            <div class="mt-8 text-center">
+                <button id="sign-out-btn" class="px-6 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition-colors shadow-md">
+                    Sign Out
+                </button>
+            </div>
+            <!-- Thank You Message Box -->
+            <div id="thank-you-message-box" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center hidden z-50">
+                <div class="bg-white p-8 rounded-lg shadow-xl text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Thank You!</h3>
+                    <p class="text-gray-700 mb-6">Your action has been noted. We appreciate your engagement!</p>
+                    <button id="close-thank-you-message" class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const appContainer = document.getElementById('app-container');
+            const authSection = document.getElementById('auth-section');
+            const mainProfileDashboard = document.getElementById('main-profile-dashboard');
+            const authTitle = document.getElementById('auth-title');
+            const authForm = document.getElementById('auth-form');
+            const authUsernameInput = document.getElementById('auth-username');
+            const authPasswordInput = document.getElementById('auth-password');
+            const rememberUsernameCheckbox = document.getElementById('remember-username'); // New checkbox
+            const authSubmitBtn = document.getElementById('auth-submit-btn');
+            const authMessageBox = document.getElementById('auth-message-box');
+            const switchAuthModeBtn = document.getElementById('switch-auth-mode-btn');
+            const switchText = document.getElementById('switch-text');
+
+            const userIdDisplay = document.getElementById('user-id-display');
+            const overviewBtn = document.getElementById('overview-btn');
+            const editProfileBtn = document.getElementById('edit-profile-btn');
+            const analyticsBtn = document.getElementById('analytics-btn');
+            const userManagementBtn = document.getElementById('user-management-btn');
+            const signOutBtn = document.getElementById('sign-out-btn');
+            const thankYouButton = document.getElementById('thank-you-button');
+            const thankYouMessageBox = document.getElementById('thank-you-message-box');
+            const closeThankYouMessageBtn = document.getElementById('close-thank-you-message');
+            const getAiInsightBtn = document.getElementById('get-ai-insight-btn');
+            const aiLoadingMessage = document.getElementById('ai-loading-message');
+            const aiResultDisplay = document.getElementById('ai-result-display');
+            const aiAnalysisText = document.getElementById('ai-analysis-text');
+            const aiErrorDisplay = document.getElementById('ai-error-display');
+            const aiErrorText = document.getElementById('ai-error-text');
+            const userListElement = document.getElementById('user-list');
+
+            let isLoginMode = true;
+
+            // --- Local Storage User Management Functions ---
+            const USERS_STORAGE_KEY = 'registeredUsers';
+            const CURRENT_USER_SESSION_KEY = 'loggedInUser'; // Use sessionStorage for active session
+            const REMEMBERED_USERNAME_KEY = 'rememberedUsername'; // New key for remembered username
+
+            function getStoredUsers() {
+                const usersJson = localStorage.getItem(USERS_STORAGE_KEY);
+                return usersJson ? JSON.parse(usersJson) : {};
+            }
+
+            function saveUsers(users) {
+                localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+            }
+
+            function getLoggedInUser() {
+                const userJson = sessionStorage.getItem(CURRENT_USER_SESSION_KEY);
+                return userJson ? JSON.parse(userJson) : null;
+            }
+
+            function setLoggedInUser(user) {
+                sessionStorage.setItem(CURRENT_USER_SESSION_KEY, JSON.stringify(user));
+            }
+
+            function clearLoggedInUser() {
+                sessionStorage.removeItem(CURRENT_USER_SESSION_KEY);
+            }
+
+            function showAuthMessage(message, type) {
+                authMessageBox.textContent = message;
+                authMessageBox.className = `auth-message ${type}`;
+                authMessageBox.classList.remove('hidden');
+                setTimeout(() => {
+                    authMessageBox.classList.add('hidden');
+                }, 3000);
+            }
+
+            function displayProfileDashboard(user) {
+                authSection.classList.add('hidden');
+                mainProfileDashboard.classList.remove('hidden');
+                setTimeout(() => {
+                    mainProfileDashboard.classList.remove('opacity-0');
+                    mainProfileDashboard.classList.add('opacity-100');
+                }, 100);
+
+                userIdDisplay.textContent = user.username;
+                updateProfileDisplay(user.profile, user.role); // Pass role to update display
+
+                if (user.role === 'admin') {
+                    userManagementBtn.classList.remove('hidden');
+                } else {
+                    userManagementBtn.classList.add('hidden');
+                }
+
+                showSection('profile');
+            }
+
+            function displayAuthSection() {
+                mainProfileDashboard.classList.add('hidden');
+                mainProfileDashboard.classList.add('opacity-0');
+                authSection.classList.remove('hidden');
+                authMessageBox.classList.add('hidden');
+                authForm.reset();
+
+                // Pre-fill username if remembered
+                const rememberedUsername = localStorage.getItem(REMEMBERED_USERNAME_KEY);
+                if (rememberedUsername) {
+                    authUsernameInput.value = rememberedUsername;
+                    rememberUsernameCheckbox.checked = true; // Check the box if username is remembered
+                } else {
+                    rememberUsernameCheckbox.checked = false;
+                }
+            }
+
+            // --- Authentication Logic ---
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = authUsernameInput.value;
+                const password = authPasswordInput.value;
+                const users = getStoredUsers();
+
+                if (isLoginMode) {
+                    // Login
+                    const user = users[username];
+                    if (user && user.password === password) {
+                        setLoggedInUser(user);
+                        if (rememberUsernameCheckbox.checked) {
+                            localStorage.setItem(REMEMBERED_USERNAME_KEY, username);
+                        } else {
+                            localStorage.removeItem(REMEMBERED_USERNAME_KEY);
+                        }
+                        displayProfileDashboard(user);
+                    } else {
+                        showAuthMessage('Invalid username or password.', 'error');
+                    }
+                } else {
+                    // Register
+                    if (users[username]) {
+                        showAuthMessage('Username already exists.', 'error');
+                    } else {
+                        const newUser = {
+                            username: username,
+                            password: password,
+                            role: Object.keys(users).length === 0 ? 'admin' : 'user',
+                            profile: {
+                                name: username,
+                                email: `${username}@example.com`,
+                                profilePicture: 'https://placehold.co/150x150/E0E7FF/4F46E5?text=User',
+                                bio: `Hello, I'm ${username}!`,
+                                website: '',
+                                memberSince: new Date().toLocaleDateString(),
+                                totalProjects: 0
+                            }
+                        };
+                        users[username] = newUser;
+                        saveUsers(users);
+                        setLoggedInUser(newUser);
+                        if (rememberUsernameCheckbox.checked) {
+                            localStorage.setItem(REMEMBERED_USERNAME_KEY, username);
+                        } else {
+                            localStorage.removeItem(REMEMBERED_USERNAME_KEY);
+                        }
+                        showAuthMessage('Registration successful! You are now logged in.', 'success');
+                        displayProfileDashboard(newUser);
+                    }
+                }
+            });
+
+            switchAuthModeBtn.addEventListener('click', () => {
+                isLoginMode = !isLoginMode;
+                if (isLoginMode) {
+                    authTitle.textContent = 'Login';
+                    authSubmitBtn.textContent = 'Login';
+                    switchText.textContent = "Don't have an account?";
+                    switchAuthModeBtn.textContent = "Register";
+                } else {
+                    authTitle.textContent = 'Register';
+                    authSubmitBtn.textContent = 'Register';
+                    switchText.textContent = "Already have an account?";
+                    switchAuthModeBtn.textContent = "Login";
+                }
+                authMessageBox.classList.add('hidden');
+                authForm.reset();
+                // Re-apply remembered username if exists
+                const rememberedUsername = localStorage.getItem(REMEMBERED_USERNAME_KEY);
+                if (rememberedUsername) {
+                    authUsernameInput.value = rememberedUsername;
+                    rememberUsernameCheckbox.checked = true;
+                }
+            });
+
+
+            // --- Profile Display & Edit Logic ---
+            function updateProfileDisplay(userProfile, userRole) { // Added userRole parameter
+                document.getElementById('profile-name-display').textContent = userProfile.name;
+                document.getElementById('profile-email-display').textContent = userProfile.email;
+                document.getElementById('profile-pic-display').src = userProfile.profilePicture;
+                document.getElementById('profile-bio-display').textContent = userProfile.bio;
+                const websiteLink = document.getElementById('profile-website-display');
+                websiteLink.href = userProfile.website || '#';
+                websiteLink.textContent = userProfile.website || 'N/A';
+                document.getElementById('member-since-display').textContent = userProfile.memberSince;
+                document.getElementById('profile-role-display').textContent = userRole || 'user'; // Display role
+                document.getElementById('total-projects-display').textContent = userProfile.totalProjects;
+                document.getElementById('last-login-display').textContent = new Date().toLocaleString();
+
+                // Set initial values for edit form
+                document.getElementById('edit-name').value = userProfile.name;
+                document.getElementById('edit-email').value = userProfile.email;
+                document.getElementById('edit-profile-picture').value = userProfile.profilePicture;
+                document.getElementById('edit-profile-pic-preview').src = userProfile.profilePicture;
+                document.getElementById('edit-bio').value = userProfile.bio;
+                document.getElementById('edit-website').value = userProfile.website;
+            }
+
+            // Function to show a specific section
+            const sections = {
+                'profile': document.getElementById('profile-overview-section'),
+                'edit': document.getElementById('edit-profile-section'),
+                'analytics': document.getElementById('analytics-section'),
+                'user-management': document.getElementById('user-management-section')
+            };
+
+            const navButtons = {
+                'profile': overviewBtn,
+                'edit': editProfileBtn,
+                'analytics': analyticsBtn,
+                'user-management': userManagementBtn
+            };
+
+            function showSection(sectionId) {
+                Object.values(sections).forEach(section => section.classList.add('hidden'));
+                sections[sectionId].classList.remove('hidden');
+
+                Object.keys(navButtons).forEach(key => {
+                    if (key === sectionId) {
+                        navButtons[key].classList.remove('bg-gray-200', 'text-gray-700');
+                        navButtons[key].classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+                    } else {
+                        navButtons[key].classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
+                        navButtons[key].classList.add('bg-gray-200', 'text-gray-700');
+                    }
+                });
+
+                if (sectionId === 'user-management') {
+                    populateUserManagementList();
+                }
+            }
+
+            // Event Listeners for Navigation Buttons
+            overviewBtn.addEventListener('click', () => showSection('profile'));
+            editProfileBtn.addEventListener('click', () => showSection('edit'));
+            analyticsBtn.addEventListener('click', () => showSection('analytics'));
+            userManagementBtn.addEventListener('click', () => {
+                const currentUser = getLoggedInUser();
+                if (currentUser && currentUser.role === 'admin') {
+                    showSection('user-management');
+                } else {
+                    // This case should ideally not happen if button is hidden, but good for robustness
+                    showAuthMessage('Access denied. Only administrators can view user management.', 'error');
+                }
+            });
+
+
+            // Handle Edit Profile Form Submission
+            document.getElementById('edit-profile-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                let currentUser = getLoggedInUser();
+                if (!currentUser) {
+                    showAuthMessage('Not logged in!', 'error');
+                    return;
+                }
+
+                const newName = document.getElementById('edit-name').value;
+                const newEmail = document.getElementById('edit-email').value;
+                const newProfilePicture = document.getElementById('edit-profile-picture').value;
+                const newBio = document.getElementById('edit-bio').value;
+                const newWebsite = document.getElementById('edit-website').value;
+
+                currentUser.profile = {
+                    ...currentUser.profile,
+                    name: newName,
+                    email: newEmail,
+                    profilePicture: newProfilePicture,
+                    bio: newBio,
+                    website: newWebsite
+                };
+
+                const users = getStoredUsers();
+                users[currentUser.username] = currentUser;
+                saveUsers(users);
+                setLoggedInUser(currentUser); // Update session storage
+
+                updateProfileDisplay(currentUser.profile, currentUser.role);
+
+                const saveMessage = document.getElementById('save-message');
+                saveMessage.classList.remove('hidden', 'text-red-600');
+                saveMessage.classList.add('text-green-600');
+                saveMessage.innerHTML = '<svg class="mr-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Profile updated successfully!</span>';
+                saveMessage.classList.remove('hidden');
+
+                setTimeout(() => {
+                    saveMessage.classList.add('hidden');
+                }, 3000);
+            });
+
+            // Update profile picture preview on URL change
+            document.getElementById('edit-profile-picture').addEventListener('input', (e) => {
+                document.getElementById('edit-profile-pic-preview').src = e.target.value;
+            });
+
+
+            // Thank You Button Functionality
+            thankYouButton.addEventListener('click', () => {
+                thankYouMessageBox.classList.remove('hidden');
+            });
+
+            closeThankYouMessageBtn.addEventListener('click', () => {
+                thankYouMessageBox.classList.add('hidden');
+            });
+
+            // Sign Out Button Functionality
+            signOutBtn.addEventListener('click', () => {
+                clearLoggedInUser(); // Clear logged in user from session storage
+                displayAuthSection(); // Show auth section
+                showAuthMessage('You have been signed out.', 'success');
+            });
+
+            // --- User Management Logic ---
+            function populateUserManagementList() {
+                userListElement.innerHTML = '';
+                const users = getStoredUsers();
+                const currentUser = getLoggedInUser();
+
+                for (const username in users) {
+                    if (users.hasOwnProperty(username)) {
+                        const user = users[username];
+                        const listItem = document.createElement('li');
+
+                        const isCurrentUser = user.username === currentUser.username;
+
+                        listItem.innerHTML = `
+                            <span>Username: ${user.username} (Role: <span id="role-${user.username}">${user.role}</span>)</span>
+                            <div>
+                                <select id="select-role-${user.username}" ${isCurrentUser ? 'disabled' : ''}>
+                                    <option value="user" ${user.role === 'user' ? 'selected' : ''}>User</option>
+                                    <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>Admin</option>
+                                </select>
+                                <button class="save-btn ${isCurrentUser ? 'disabled' : ''}" data-username="${user.username}" ${isCurrentUser ? 'disabled' : ''}>Save</button>
+                            </div>
+                        `;
+                        userListElement.appendChild(listItem);
+
+                        const roleSelect = document.getElementById(`select-role-${user.username}`);
+                        const saveBtn = listItem.querySelector('.save-btn');
+
+                        // Disable save button by default, enable only when role changes (unless current user)
+                        saveBtn.disabled = true;
+
+                        roleSelect.addEventListener('change', () => {
+                            saveBtn.disabled = isCurrentUser ? true : (roleSelect.value === user.role); // Disable if value is original role
+                        });
+
+                        saveBtn.addEventListener('click', (event) => {
+                            if (!event.target.disabled) {
+                                const targetUsername = event.target.dataset.username;
+                                const newRole = document.getElementById(`select-role-${targetUsername}`).value;
+                                updateRole(targetUsername, newRole);
+                            }
+                        });
+                    }
+                }
+            }
+
+            function updateRole(username, newRole) {
+                const users = getStoredUsers();
+                if (users[username]) {
+                    users[username].role = newRole;
+                    saveUsers(users);
+                    populateUserManagementList(); // Re-render list
+                    showUserManagementMessage(`Role for ${username} updated to ${newRole}.`, 'success');
+
+                    let currentUser = getLoggedInUser();
+                    if (currentUser && currentUser.username === username) {
+                        currentUser.role = newRole;
+                        setLoggedInUser(currentUser);
+                        // Update profile display with new role immediately
+                        document.getElementById('profile-role-display').textContent = newRole;
+
+                        if (currentUser.role === 'admin') {
+                            userManagementBtn.classList.remove('hidden');
+                        } else {
+                            userManagementBtn.classList.add('hidden');
+                            if (sections['user-management'].classList.contains('hidden')) {
+                                // Do nothing if user management is not active
+                            } else {
+                                showSection('profile'); // Redirect if admin privileges removed and user management is active
+                            }
+                        }
+                    }
+                } else {
+                    showUserManagementMessage(`User ${username} not found.`, 'error');
+                }
+            }
+
+            function showUserManagementMessage(message, type) {
+                const messageBox = document.getElementById('user-management-message');
+                messageBox.textContent = message;
+                messageBox.className = `auth-message ${type}`;
+                messageBox.classList.remove('hidden');
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 3000);
+            }
+
+            // --- LLM Integration for Analytics Insights (Static Data) ---
+            const analyticsData = [
+                { name: 'Jan', visits: 4000, bounceRate: 50, avgDuration: 180 },
+                { name: 'Feb', visits: 3000, bounceRate: 55, avgDuration: 200 },
+                { name: 'Mar', visits: 2000, bounceRate: 60, avgDuration: 150 },
+                { name: 'Apr', visits: 2780, bounceRate: 48, avgDuration: 210 },
+                { name: 'May', visits: 1890, bounceRate: 65, avgDuration: 130 },
+                { name: 'Jun', visits: 2390, bounceRate: 52, avgDuration: 190 },
+                { name: 'Jul', visits: 3490, bounceRate: 40, avgDuration: 220 },
+            ];
+
+            getAiInsightBtn.addEventListener('click', async () => {
+                aiLoadingMessage.classList.remove('hidden');
+                aiResultDisplay.classList.add('hidden');
+                aiErrorDisplay.classList.add('hidden');
+                aiAnalysisText.textContent = '';
+                aiErrorText.textContent = '';
+
+                const prompt = `Given the following website analytics data, provide a concise summary of the trends and suggest one actionable insight or improvement.
+
+                Data: ${JSON.stringify(analyticsData)}
+
+                Key Metrics:
+                Total Page Views: 15,000
+                Unique Visitors: 5,500
+                Bounce Rate: 45%
+                Average Session Duration: 3:20 (200 seconds)`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Canvas will provide this dynamically
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                let retryCount = 0;
+                const maxRetries = 3;
+                let delay = 1000; // 1 second
+
+                while (retryCount < maxRetries) {
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            if (response.status === 429 && retryCount < maxRetries - 1) {
+                                console.warn(`Rate limit hit. Retrying in ${delay / 1000}s...`);
+                                await new Promise(res => setTimeout(res, delay));
+                                delay *= 2;
+                                retryCount++;
+                                continue;
+                            } else {
+                                const errorData = await response.json();
+                                throw new Error(`API error: ${response.status} ${response.statusText} - ${errorData.error.message || 'Unknown error'}`);
+                            }
+                        }
+
+                        const result = await response.json();
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const text = result.candidates[0].content.parts[0].text;
+                            aiAnalysisText.textContent = text;
+                            aiResultDisplay.classList.remove('hidden');
+                        } else {
+                            aiErrorText.textContent = 'No valid response from AI. Please try again.';
+                            aiErrorDisplay.classList.remove('hidden');
+                        }
+                        break; // Exit loop on success
+
+                    } catch (error) {
+                        console.error("Error calling Gemini API:", error);
+                        aiErrorText.textContent = `Failed to generate insights: ${error.message}.`;
+                        aiErrorDisplay.classList.remove('hidden');
+                        if (retryCount < maxRetries - 1) {
+                            console.warn(`Attempt ${retryCount + 1} failed. Retrying in ${delay / 1000}s...`);
+                            await new Promise(res => setTimeout(res, delay));
+                            delay *= 2;
+                            retryCount++;
+                        } else {
+                            aiErrorText.textContent = 'Failed to generate insights after multiple attempts. Please try again later.';
+                        }
+                    }
+                }
+                aiLoadingMessage.classList.add('hidden');
+            });
+
+
+            // Initial page load check
+            const loggedInUser = getLoggedInUser();
+            if (loggedInUser) {
+                displayProfileDashboard(loggedInUser);
+            } else {
+                displayAuthSection();
+            }
+        });
+    </script>
+</body>
+</html>
